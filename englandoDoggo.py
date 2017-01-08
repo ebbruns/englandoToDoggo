@@ -7,6 +7,8 @@ import random
 
 DOG_TRANS = ["doggo", "doge", "pupper", "shoober", "smol pupper", "big ol doggo", "shooblet", "long doggo",
              "lengthy doggo"]
+CAT_TRANS = ["catto", "catter", "meow monster", "fur devil", "kitteh", "l0lcat", "meower"]
+SNOUT_TRANS = ["snoot", "booper", "sniffer", "bork beak", "muzzle", "pup probiscus", "nose nozzle", "snoot spout"]
 
 
 def look_at(name_list):
@@ -17,6 +19,10 @@ def look_at(name_list):
 def doggo_filter(word):
     if word.lower() == "dog":
         return look_at(DOG_TRANS)
+    if word.lower() == "cat":
+        return look_at(CAT_TRANS)
+    if word.lower() in ["nose", "snout"]:
+        return look_at(SNOUT_TRANS)
     return word
 
 
