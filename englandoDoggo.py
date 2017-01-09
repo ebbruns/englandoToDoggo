@@ -11,18 +11,22 @@ CAT_TRANS = ["catto", "catter", "meow monster", "fur devil", "kitteh", "l0lcat",
 SNOUT_TRANS = ["snoot", "booper", "sniffer", "bork beak", "muzzle", "pup probiscus", "nose nozzle", "snoot spout"]
 
 
-def look_at(name_list):
+def look_at(name_list, is_plural):
     index = random.randint(0, len(name_list)-1)
+    if is_plural:
+        return name_list[index] + "s"
     return name_list[index]
 
 
 def doggo_filter(word):
-    if word.lower() == "dog":
-        return look_at(DOG_TRANS)
-    if word.lower() == "cat":
-        return look_at(CAT_TRANS)
+    if word.lower() in ["dog", "pup", "canine", "dachsund", "pug", "golden retriever", "shiba", "labrador", "poodle",
+                        "dogs", "pups", "canines", "dachsunds", "pugs", "golden retrievers", "shibas", "labradors",
+                        "poodles"]:
+        return look_at(DOG_TRANS, word.endswith("s"))
+    if word.lower() in ["cat", "kitten", "cats", "kittens"]:
+        return look_at(CAT_TRANS, word.endswith("s"))
     if word.lower() in ["nose", "snout"]:
-        return look_at(SNOUT_TRANS)
+        return look_at(SNOUT_TRANS, False)
     return word
 
 
